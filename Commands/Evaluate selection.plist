@@ -8,7 +8,7 @@
 	<string># Evaluate the current seletion in our Scheme interpreter
 #
 # The interpreter you use should be set in the environment
-# variable TM_SCHEME_EVALUATOR 
+# variable TM_SCHEME_INTERPRETER
 
 INTERPRET=${TM_SCHEME_INTERPRETER:=csi}
 CMD=$(basename "$INTERPRET")
@@ -30,6 +30,8 @@ if [ $CMD == "mzscheme" ] ; then
 		"$INTERPRET" -vm -e "$TM_SELECTED_TEXT"
 	fi
 elif [ $CMD == "csi" ] ; then
+	"$INTERPRET" -q &lt; /dev/stdin
+elif [ $CMD == "gosh" ] ; then
 	"$INTERPRET" -q &lt; /dev/stdin
 fi</string>
 	<key>fallbackInput</key>

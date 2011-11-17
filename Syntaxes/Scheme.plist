@@ -27,14 +27,6 @@
 		<string>scm</string>
 		<string>sch</string>
 	</array>
-	<key>foldingStartMarker</key>
-	<string>(?x)^ [ \t]* \(
-	  (?&lt;par&gt;
-	    ( [^()\n]++ | \( \g&lt;par&gt; \)? )*+
-	  )
-	$</string>
-	<key>foldingStopMarker</key>
-	<string>^\s*$</string>
 	<key>keyEquivalent</key>
 	<string>^~S</string>
 	<key>name</key>

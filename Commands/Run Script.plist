@@ -216,15 +216,25 @@ end
 # rm -f "$TM_ERRORTEMP" </string>
 	<key>input</key>
 	<string>document</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>@r</string>
 	<key>name</key>
 	<string>Run Script</string>
-	<key>output</key>
-	<string>showAsHTML</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
 	<key>scope</key>
 	<string>source.scheme</string>
+	<key>semanticClass</key>
+	<string>process.run.script.scheme</string>
 	<key>uuid</key>
 	<string>CBFEB6F9-D38C-4726-BD16-325E3FCC0C6B</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

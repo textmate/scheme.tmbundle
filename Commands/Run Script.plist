@@ -14,7 +14,7 @@ require ENV["TM_SUPPORT_PATH"] + "/lib/escape"
 TextMate.save_current_document
 TextMate::Executor.make_project_master_current_document
 
-interpreters = ["mzscheme", "csi", "guile", "gosh"]
+interpreters = ["mzscheme", "csi", "guile", "gosh", "racket"]
 args = []
 args &lt;&lt; (ENV["TM_SCHEME"] || interpreters.select{|ii| ENV["PATH"].split(":").any?{|dd| File.executable? File.join(dd, ii)}}.first)
 
@@ -23,6 +23,8 @@ when "mzscheme"
   args &lt;&lt; "-e" &lt;&lt; '(require (lib "errortrace.ss" "errortrace"))' &lt;&lt; "-r"
 when "gosh"
   # nothing
+when "racket"
+  args &lt;&lt; "-r"
 else
   args &lt;&lt; "-s"
 end

@@ -44,7 +44,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#string</string>
+			<string>#constants</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -111,6 +111,57 @@
 					<key>name</key>
 					<string>constant.numeric.scheme</string>
 				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=[\(\s])(#\\)(space|newline|tab)(?=[\s\)])</string>
+					<key>name</key>
+					<string>constant.character.named.scheme</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=[\(\s])(#\\)x[0-9A-F]{2,4}(?=[\s\)])</string>
+					<key>name</key>
+					<string>constant.character.hex-literal.scheme</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=[\(\s])(#\\).(?=[\s\)])</string>
+					<key>name</key>
+					<string>constant.character.escape.scheme</string>
+				</dict>
+                                <dict>
+                                        <key>begin</key>
+                                        <string>(")</string>
+                                        <key>beginCaptures</key>
+                                        <dict>
+                                                <key>1</key>
+                                                <dict>
+                                                        <key>name</key>
+                                                        <string>punctuation.definition.string.begin.scheme</string>
+                                                </dict>
+                                        </dict>
+                                        <key>end</key>
+                                        <string>(")</string>
+                                        <key>endCaptures</key>
+                                        <dict>
+                                                <key>1</key>
+                                                <dict>
+                                                        <key>name</key>
+                                                        <string>punctuation.definition.string.end.scheme</string>
+                                                </dict>
+                                        </dict>
+                                        <key>name</key>
+                                        <string>string.quoted.double.scheme</string>
+                                        <key>patterns</key>
+                                        <array>
+                                                <dict>
+                                                        <key>match</key>
+                                                        <string>\\.</string>
+                                                        <key>name</key>
+                                                        <string>constant.character.escape.scheme</string>
+                                                </dict>
+                                        </array>
+                                </dict>
 			</array>
 		</dict>
 		<key>illegal</key>
@@ -386,7 +437,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#string</string>
+					<string>#constants</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -461,10 +512,6 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
 					<key>begin</key>
 					<string>(?x)
 						(?&lt;=\()       # preceded by (
@@ -513,15 +560,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#comment</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#sexp</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#illegal</string>
+							<string>$self</string>
 						</dict>
 					</array>
 				</dict>
@@ -575,15 +614,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#comment</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#sexp</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#illegal</string>
+							<string>$self</string>
 						</dict>
 					</array>
 				</dict>
@@ -611,55 +642,9 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#comment</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#sexp</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#illegal</string>
+							<string>$self</string>
 						</dict>
 					</array>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#quote-sexp</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#quote</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#language-functions</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#constants</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;=[\(\s])(#\\)(space|newline|tab)(?=[\s\)])</string>
-					<key>name</key>
-					<string>constant.character.named.scheme</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;=[\(\s])(#\\)x[0-9A-F]{2,4}(?=[\s\)])</string>
-					<key>name</key>
-					<string>constant.character.hex-literal.scheme</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;=[\(\s])(#\\).(?=[\s\)])</string>
-					<key>name</key>
-					<string>constant.character.escape.scheme</string>
 				</dict>
 				<dict>
 					<key>comment</key>
@@ -674,45 +659,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#sexp</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#illegal</string>
-				</dict>
-			</array>
-		</dict>
-		<key>string</key>
-		<dict>
-			<key>begin</key>
-			<string>(")</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.begin.scheme</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>(")</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.end.scheme</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>string.quoted.double.scheme</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>\\.</string>
-					<key>name</key>
-					<string>constant.character.escape.scheme</string>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>

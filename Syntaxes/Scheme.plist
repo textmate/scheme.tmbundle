@@ -116,7 +116,7 @@
 		<key>illegal</key>
 		<dict>
 			<key>match</key>
-			<string>[()\[\]]</string>
+			<string>[()]</string>
 			<key>name</key>
 			<string>invalid.illegal.parenthesis.scheme</string>
 		</dict>

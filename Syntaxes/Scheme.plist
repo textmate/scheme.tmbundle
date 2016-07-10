@@ -494,7 +494,7 @@
 							<key>name</key>
 							<string>entity.name.function.scheme</string>
 						</dict>
-						<key>4</key>
+						<key>6</key>
 						<dict>
 							<key>name</key>
 							<string>variable.parameter.function.scheme</string>
